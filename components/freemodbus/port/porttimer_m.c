@@ -49,6 +49,7 @@
 #include "mbport.h"
 #include "port_serial_master.h"
 #include "sdkconfig.h"
+#include "mbc_serial_master.h"  
 
 #define MB_US50_FREQ            (20000) // 20kHz 1/20000 = 50mks
 #define MB_TICK_TIME_US         (50)    // 50uS = one tick for timer
@@ -175,7 +176,7 @@ void vMBMasterPortTimersConvertDelayEnable(void)
 
 void vMBMasterPortTimersRespondTimeoutEnable(void)
 {
-    USHORT usTimerTicks = (MB_MASTER_TIMEOUT_MS_RESPOND * 1000 / MB_TICK_TIME_US);
+    USHORT usTimerTicks = (mb_master_timeout_ * 1000 / MB_TICK_TIME_US);
 
     vMBMasterSetCurTimerMode(MB_TMODE_RESPOND_TIMEOUT);
     ESP_LOGD(MB_PORT_TAG,"%s Respond enable timeout.", __func__);
