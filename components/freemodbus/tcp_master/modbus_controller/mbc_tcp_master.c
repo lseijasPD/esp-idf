@@ -135,8 +135,8 @@ static esp_err_t mbc_tcp_master_setup(void* comm_info)
                     ESP_ERR_INVALID_ARG, "mb wrong slave ip address table.");
     MB_MASTER_CHECK(((comm_info_ptr->ip_addr_type == MB_IPV4) || (comm_info_ptr->ip_addr_type == MB_IPV6)),
                     ESP_ERR_INVALID_ARG, "mb incorrect addr type = (0x%x).", (uint8_t)comm_info_ptr->ip_addr_type);
-    MB_MASTER_CHECK((comm_info_ptr->ip_netif_ptr != NULL),
-                        ESP_ERR_INVALID_ARG, "mb incorrect iface address.");
+    /*MB_MASTER_CHECK((comm_info_ptr->ip_netif_ptr != NULL),
+                        ESP_ERR_INVALID_ARG, "mb incorrect iface address.");*/
     // Save the communication options
     mbm_opts->mbm_comm = *(mb_communication_info_t*)comm_info_ptr;
     return ESP_OK;
